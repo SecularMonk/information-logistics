@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Icon from "@mui/material/Icon";
+import Image from "next/image";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import Menu from "@mui/material/Menu";
@@ -13,7 +14,6 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import styles from "../styles/NavBar.module.css";
 
 const pages = ["Home", "About", "Blog"];
@@ -46,7 +46,7 @@ const NavBar = () => {
          <Container maxWidth="xl">
             <Toolbar disableGutters>
                <Icon className={styles.icon}>
-                  <img className={styles.logo} src="/ILtransparent.svg" />
+                  <Image className={styles.logo} width={500} height={500} src="/ILtransparent.svg" />
                </Icon>
                <Typography
                   variant="h6"
