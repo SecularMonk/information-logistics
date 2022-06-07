@@ -1,0 +1,17 @@
+.logo {
+   height: 2em;
+   margin-left: 0.5rem;
+}
+
+.icon {
+   height: 100%;
+   width: 4em;
+   margin: auto;
+}
+
+@media (max-width: 600px) {
+   .grid {
+      width: 100%;
+      flex-direction: column;
+   }
+}

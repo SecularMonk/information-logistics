@@ -1,0 +1,27 @@
+.logo {
+   height: 2em;
+   margin-left: 0.5rem;
+}
+
+.icon {
+   height: 100%;
+   width: 4em;
+   margin: auto;
+}
+
+.container {
+   position: absolute;
+   width: 300px;
+   height: 300px;
+   margin-left: -150px;
+   background: #063;
+   bottom: 0px;
+   left: 50%;
+}
+
+@media (max-width: 600px) {
+   .grid {
+      width: 100%;
+      flex-direction: column;
+   }
+}

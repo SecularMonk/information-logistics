@@ -1,0 +1,25 @@
+@media (min-width: 768px) {
+   .grid {
+      display: none;
+   }
+   .container {
+      display: none;
+   }
+}
+
+@media (max-width: 768px) {
+   .grid {
+      width: 100%;
+      flex-direction: column;
+   }
+   .container {
+      display: grid;
+      position: absolute;
+      width: 300px;
+      height: auto;
+      margin-left: -150px;
+      background: #063;
+      bottom: 0px;
+      left: 50%;
+   }
+}
