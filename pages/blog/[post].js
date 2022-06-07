@@ -2,7 +2,7 @@ function BlogPost({ post }) {
    return (
       <div>
          <h1>{post.title}</h1>
-         <h2>id: {post.id}</h2>
+         <h2>id: {post.post}</h2>
       </div>
    );
 }
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
    // Get the paths we want to pre-render based on posts
    const paths = posts.map((post) => ({
-      params: { id: post },
+      params: { post: post.toString() },
    }));
 
    // We'll pre-render only these paths at build time.
@@ -25,7 +25,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
    // params contains the post `id`.
    // If the route is like /posts/1, then params.id is 1
-   const post = { title: "postTitle", id: params.id };
+   const post = { title: "postTitle", post: params.post };
 
    // Pass post data to the page via props
    return { props: { post } };
