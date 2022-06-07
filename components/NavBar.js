@@ -21,10 +21,12 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const NavBar = () => {
    const [anchorElNav, setAnchorElNav] = React.useState(null);
+   const [anchorElClass, setAnchorElClass] = React.useState("closed");
    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
    const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
+      setAnchorElClass("open")
    };
    const handleOpenUserMenu = (event) => {
       setAnchorElUser(event.currentTarget);
@@ -32,6 +34,7 @@ const NavBar = () => {
 
    const handleCloseNavMenu = () => {
       setAnchorElNav(null);
+      setAnchorElClass("closed")
    };
 
    const handleCloseUserMenu = () => {
@@ -60,7 +63,7 @@ const NavBar = () => {
                      textDecoration: "none",
                   }}
                >
-                  InLo
+                  IL
                </Typography>
 
                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -88,36 +91,18 @@ const NavBar = () => {
                      }}
                      open={Boolean(anchorElNav)}
                      onClose={handleCloseNavMenu}
+                     class={anchorElClass}
                      sx={{
                         display: { xs: "block", md: "none" },
                      }}
                   >
                      {pages.map((page) => (
-                        <Link key={page} textAlign="center" href='"/" + {page}'>
+                        <Link key={page} textAlign="center" href={"/" + page.toLowerCase()}>
                            {page}
                         </Link>
                      ))}
                   </Menu>
-               </Box>
-               <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
-               <Typography
-                  variant="h5"
-                  noWrap
-                  component="a"
-                  href=""
-                  sx={{
-                     mr: 2,
-                     display: { xs: "flex", md: "none" },
-                     flexGrow: 1,
-                     fontFamily: "monospace",
-                     fontWeight: 700,
-                     letterSpacing: ".3rem",
-                     color: "inherit",
-                     textDecoration: "none",
-                  }}
-               >
-                  LOGO
-               </Typography>
+               </Box>              
                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                   {pages.map((page) => (
                      <Button key={page} onClick={handleCloseNavMenu} href={"/" + page.toLowerCase()} sx={{ my: 2, color: "white", display: "block" }}>
