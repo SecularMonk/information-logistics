@@ -2,13 +2,38 @@
    margin-left: 0.5rem;
 }
 
+.button {
+   background-color: "#000";
+   color: "primary";
+}
+
+.button:hover {
+   background-color: "#fff";
+   color: "#3c52b2";
+}
+
+.a {
+   background-color: "#000";
+}
+
+.a:hover {
+   background-color: "#fff";
+   color: "#3c52b2";
+}
+
 .icon {
    height: 100%;
    width: 4em;
    margin: auto;
 }
 
-Menu.open {
+MenuIcon.nav-open {
+   -webkit-transform: scale(0.8, 0.8);
+   -ms-transform: scale(0.8, 0.8);
+   transform: scale(0.5, 0.5);
+}
+
+IconButton.nav-open {
    -webkit-transform: scale(0.8, 0.8);
    -ms-transform: scale(0.8, 0.8);
    transform: scale(0.5, 0.5);

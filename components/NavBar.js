@@ -19,14 +19,14 @@ import styles from "../styles/NavBar.module.css";
 const pages = ["Home", "About", "Blog"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-const NavBar = () => {
+const NavBar = (props) => {
    const [anchorElNav, setAnchorElNav] = React.useState(null);
-   const [anchorElClass, setAnchorElClass] = React.useState("closed");
+   const [anchorElClass, setAnchorElClass] = React.useState("nav-closed");
    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
    const handleOpenNavMenu = (event) => {
       setAnchorElNav(event.currentTarget);
-      setAnchorElClass("open")
+      setAnchorElClass("nav-open");
    };
    const handleOpenUserMenu = (event) => {
       setAnchorElUser(event.currentTarget);
@@ -34,7 +34,7 @@ const NavBar = () => {
 
    const handleCloseNavMenu = () => {
       setAnchorElNav(null);
-      setAnchorElClass("closed")
+      setAnchorElClass("nav-closed");
    };
 
    const handleCloseUserMenu = () => {
@@ -42,13 +42,13 @@ const NavBar = () => {
    };
 
    return (
-      <AppBar position="static">
+      <AppBar position="static" sx={{ bgcolor: "primary" }}>
          <Container maxWidth="xl">
             <Toolbar disableGutters>
                <Icon className={styles.icon}>
                   <Image className={styles.logo} width={500} height={500} src="/ILtransparent.svg" />
                </Icon>
-               <Typography
+               {/* <Typography
                   variant="h6"
                   noWrap
                   component="a"
@@ -64,7 +64,7 @@ const NavBar = () => {
                   }}
                >
                   IL
-               </Typography>
+               </Typography> */}
 
                <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
                   <IconButton
@@ -74,8 +74,9 @@ const NavBar = () => {
                      aria-haspopup="true"
                      onClick={handleOpenNavMenu}
                      color="inherit"
+                     className={anchorElClass}
                   >
-                     <MenuIcon />
+                     <MenuIcon className={anchorElClass} />
                   </IconButton>
                   <Menu
                      id="menu-appbar"
@@ -91,24 +92,37 @@ const NavBar = () => {
                      }}
                      open={Boolean(anchorElNav)}
                      onClose={handleCloseNavMenu}
-                     class={anchorElClass}
+                     className={anchorElClass}
                      sx={{
                         display: { xs: "block", md: "none" },
                      }}
                   >
                      {pages.map((page) => (
-                        <Link key={page} textAlign="center" href={"/" + page.toLowerCase()}>
+                        <Link key={page} textAlign="center" className={styles.link} underline="hover" href={"/" + page.toLowerCase()}>
                            {page}
                         </Link>
                      ))}
                   </Menu>
-               </Box>              
+               </Box>
                <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
                   {pages.map((page) => (
-                     <Button key={page} onClick={handleCloseNavMenu} href={"/" + page.toLowerCase()} sx={{ my: 2, color: "white", display: "block" }}>
+                     <Button
+                        key={page}
+                        onClick={handleCloseNavMenu}
+                        href={"/" + page.toLowerCase()}
+                        className={styles.button}
+                        underline="hover"
+                        size="medium"
+                        color="primary"
+                        variant="outlined"
+                        sx={{ my: 2, color: "white", display: "block" }}
+                     >
                         {page}
                      </Button>
                   ))}
+                  <Button color="primary" variant="outlined" className={styles.button}>
+                     {"Toggle Theme"}
+                  </Button>
                </Box>
 
                <Box sx={{ flexGrow: 0 }}>
